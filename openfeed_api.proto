@@ -13,7 +13,6 @@ package org.openfeed;
 option java_multiple_files = true;
 option java_generate_equals_and_hash = true;
 option optimize_for = SPEED;
-option go_package = "openfeed";
 
 import "openfeed_instrument.proto";
 import "openfeed.proto";
@@ -30,6 +29,7 @@ message OpenfeedGatewayRequest {
     SubscriptionRequest subscriptionRequest = 3;
     InstrumentRequest instrumentRequest = 4;
     InstrumentReferenceRequest instrumentReferenceRequest = 5;
+    ExchangeRequest exchangeRequest = 6;
   }
 }
 /// Openfeed Server Response
@@ -40,6 +40,7 @@ message OpenfeedGatewayMessage {
     InstrumentResponse instrumentResponse = 3;
     InstrumentReferenceResponse instrumentReferenceResponse = 4;
     SubscriptionResponse subscriptionResponse = 5;
+
     MarketStatus marketStatus = 6;
     HeartBeat heartBeat = 7;
     InstrumentDefinition instrumentDefinition = 8;
@@ -47,6 +48,7 @@ message OpenfeedGatewayMessage {
     MarketUpdate marketUpdate = 10;
     VolumeAtPrice volumeAtPrice = 11;
     Ohlc ohlc = 12;
+    ExchangeResponse exchangeResponse = 13;
   }
 }
 
@@ -151,6 +153,22 @@ message InstrumentReferenceResponse {
   string ddfSymbol = 8;
   string ddfExchange = 9; 
   string ddfBaseCode = 10; 
+}
+
+/// Exchange Request, returns ExchangeResponse.  Gives available exchanges.
+message ExchangeRequest {
+  sint64 correlationId = 1;
+  string token = 2;
+}
+message ExchangeResponse {
+  sint64 correlationId = 1;
+  Status status = 2;
+  repeated Exchange exchanges = 3;
+  message Exchange {
+    string code = 1;
+    sint32 channelId = 2;
+  }
+
 }
 
 /// Subscription Request
