@@ -166,9 +166,8 @@ message ExchangeResponse {
   repeated Exchange exchanges = 3;
   message Exchange {
     string code = 1;
-    sint32 channelId = 2;
+    string description = 2;
   }
-
 }
 
 /// Subscription Request
