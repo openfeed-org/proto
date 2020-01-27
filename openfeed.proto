@@ -13,7 +13,6 @@ package org.openfeed;
 option java_multiple_files = true;
 option java_generate_equals_and_hash = true;
 option optimize_for = SPEED;
-option go_package = "openfeed";
 
 import "openfeed_instrument.proto";
 
@@ -279,15 +278,14 @@ message MarketSnapshot {
   CapitalDistributions capitalDistributions = 45;
   SharesOutstanding sharesOutstanding = 46;
   NetAssetValue netAssetValue = 47;
-
   /// Previous session.
   MarketSession previousSession = 48;
-
   /// 'T' session.
   MarketSession tSession = 49;
-
   /// Volume at price. Used by the market state/ JERQ.
   VolumeAtPrice volumeAtPrice = 50;
+  HighRolling highRolling = 51;
+  LowRolling lowRolling = 52;
 }
 
 enum SnapshotRequestResult {
@@ -369,6 +367,8 @@ message MarketUpdate {
       SharesOutstanding sharesOutstanding = 44;
       NetAssetValue netAssetValue = 45;
       MarketSummary marketSummary = 46;
+      HighRolling highRolling = 47;
+      LowRolling lowRolling = 48;
   }
 }
 
@@ -669,7 +669,27 @@ message High {
   string currency = 12;
 }
 
+// 24 hour rolling window
+message HighRolling {
+  sint64 transactionTime = 9;
+  /// Date only, format 2012-07-04 -> 20120704
+  sint32 tradeDate = 10;
+  /// Divide by priceDenominator
+  sint64 price = 11;
+  string currency = 12;
+}
+
 message Low {
+  sint64 transactionTime = 9;
+  /// Date only, format 2012-07-04 -> 20120704
+  sint32 tradeDate = 10;
+  /// Divide by priceDenominator
+  sint64 price = 11;
+  string currency = 12;
+}
+
+// 24 hour rolling window
+message LowRolling {
   sint64 transactionTime = 9;
   /// Date only, format 2012-07-04 -> 20120704
   sint32 tradeDate = 10;

@@ -13,7 +13,6 @@ package org.openfeed;
 option java_multiple_files = true;
 option java_generate_equals_and_hash = true;
 option optimize_for = SPEED;
-option go_package = "openfeed";
 
 message InstrumentDefinition {
 
@@ -103,8 +102,8 @@ message InstrumentDefinition {
   // Removed deprecated field 26
   // Removed deprecated field 27
 
-   /// Divide prices by this value to get real price values
-   sint32 priceDenominator = 28;
+  /// Divide prices by this value to get real price values
+  sint32 priceDenominator = 28;
   
   /// Divide trade quantities by this value to get real quantities 
   sint32 quantityDenominator = 29;
@@ -185,11 +184,15 @@ message InstrumentDefinition {
   /// true if this instrument generated FX option.
   bool syntheticAmericanOptionInstrument = 223;
 
-  /// 
+  ///
   string barchartExchangeCode = 224;
   /// 
   string barchartBaseCode = 225;
-  
+  ///
+  sint32 volumeDenominator = 226;
+  ///
+  sint32 bidOfferQuantityDenominator = 227;
+
   // #############################################
   enum InstrumentType {
     UNKNOWN_INSTRUMENT_TYPE = 0;
