@@ -199,6 +199,7 @@ message SubscriptionResponse {
   string exchange = 5;
   sint32 channelId = 6;
   sint32 numberOfDefinitions = 7;
+  SubscriptionType subscriptionType = 8;
 }
 
 

@@ -137,6 +137,7 @@ message OpenfeedMessage {
     MarketSnapshot marketSnapshot = 15;
     MarketUpdate marketUpdate = 16;
     MarketStatus marketStatus = 17;
+    EODCommoditySummary eodCommoditySummary = 18;
   }
 }
 
@@ -187,6 +188,21 @@ message MarketStatus {
   sint64 transactionTime = 1;
   sint32 channel = 2;
   MarketWideStatus marketWideStatus = 3;
+}
+
+/// EOD commodity summary. Used to represent consolidated total values for the group of contracts. Total volume for
+/// all ES futures, for example.
+message EODCommoditySummary {
+  /// Trade date in the format YYYYMMDD
+  sint32 tradeDate = 1;
+  /// Contract root, for example ES.
+  string contractRoot = 2;
+  /// Consolidated volume.
+  sint64 consolidatedVolume = 3;
+  // Consolidated open interest.
+  sint64 consolidatedOpenInterest = 4;
+  /// For internal use only.   Ignore
+  bytes auxiliaryData = 99;
 }
 
 /// Session used in snapshot.
@@ -765,7 +781,7 @@ message MonetaryValue {
   sint64 transactionTime = 9;
   /// Date only, format 2012-07-04 -> 20120704
   sint32 tradeDate = 10;
-  /// Divide by priceDenominator
+  /// 2 decimals of precision
   sint64 value = 11;
   string valueCurrencyCode = 12;
 }
