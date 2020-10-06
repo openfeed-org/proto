@@ -1000,13 +1000,10 @@ message VolumeAtPrice {
 message Ohlc {
   sint64 marketId = 1;
   string symbol = 2;
-  /// Most recent opening price
   Open open = 3;
-  /// High price for the trading session
   High high = 4;
-  /// Low price for the trading session
   Low low = 5;
-  /// Most recent closing price
   Close close = 6;
+  sint32 tradeDate = 10;
 }
 
