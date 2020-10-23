@@ -138,6 +138,7 @@ message OpenfeedMessage {
     MarketUpdate marketUpdate = 16;
     MarketStatus marketStatus = 17;
     EODCommoditySummary eodCommoditySummary = 18;
+    InstrumentAction instrumentAction = 19;
   }
 }
 
@@ -1005,5 +1006,22 @@ message Ohlc {
   Low low = 5;
   Close close = 6;
   sint32 tradeDate = 10;
+}
+
+/// Instrument Actions
+enum ActionType {
+   UNKNOWN_ACTION = 0;
+   LISTING = 1;
+   DELISTING = 2;
+   EXCHANGE_MOVE = 3;
+}
+/// Instrument Action
+message InstrumentAction {
+  sint64 transactionTime = 1;
+  sint32 tradeDate = 2;
+  ActionType action = 3;
+  string message = 4;
+  InstrumentDefinition instrument = 10;
+  InstrumentDefinition newInstrument = 11;
 }
 
