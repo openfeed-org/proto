@@ -49,6 +49,7 @@ message OpenfeedGatewayMessage {
     VolumeAtPrice volumeAtPrice = 11;
     Ohlc ohlc = 12;
     ExchangeResponse exchangeResponse = 13;
+    InstrumentAction instrumentAction = 14;
   }
 }
 
