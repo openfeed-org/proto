@@ -1015,14 +1015,8 @@ message Ohlc {
   sint32 tradeDate = 10;
   /// UTC Timestamp, nano seconds since Unix epoch
   sint64 transactionTime = 11;
-
-  repeated TradeReference tradeReferences = 12;
-  message TradeReference {
-    /// UTC Timestamp, nano seconds since Unix epoch
-    sint64 transactionTime = 1;
-    string tradeId = 2;
-    string saleCondition = 3;
-  }
+  /// Trade Ids used in this OHLC
+  repeated string tradeIds = 12;
 }
 
 /// Instrument Actions
