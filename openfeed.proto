@@ -912,7 +912,7 @@ message MarketSummary {
   /// Used by CME ITC.
   string session = 21;
 
-  /// Used to differntiate various ddf messages.
+  /// Used to differentiate various ddf messages.
   enum SummaryType {
     // DDF 2/1 Exchange refresh
     EXCHANGE_REFRESH = 0;
@@ -926,6 +926,8 @@ message MarketSummary {
     EOD_COMMODITY_STATS = 4;
   }
   SummaryType summaryType = 22;
+  /// Total traded volume for the prior day.
+  Volume prevVolume = 23;
 }
 
 
@@ -1005,7 +1007,22 @@ message Ohlc {
   High high = 4;
   Low low = 5;
   Close close = 6;
+  /// Sum of volume
+  sint64 volume = 7;
+  /// Sum of price volume using normalized price
+  double priceVolume = 8;
+  sint64 numberTrades = 9;
   sint32 tradeDate = 10;
+  /// UTC Timestamp, nano seconds since Unix epoch
+  sint64 transactionTime = 11;
+
+  repeated TradeReference tradeReferences = 12;
+  message TradeReference {
+    /// UTC Timestamp, nano seconds since Unix epoch
+    sint64 transactionTime = 1;
+    string tradeId = 2;
+    string saleCondition = 3;
+  }
 }
 
 /// Instrument Actions
