@@ -1017,6 +1017,8 @@ message Ohlc {
   sint64 transactionTime = 11;
   /// Trade Ids used in this OHLC
   repeated string tradeIds = 12;
+  sint64 openStartTime = 13;
+  sint64 closeEndTime = 14;
 }
 
 /// Instrument Actions
