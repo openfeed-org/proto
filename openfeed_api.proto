@@ -154,6 +154,7 @@ message InstrumentReferenceResponse {
   string ddfSymbol = 8;
   string ddfExchange = 9; 
   string ddfBaseCode = 10; 
+  string exchangeSymbol = 11;
 }
 
 /// Exchange Request, returns ExchangeResponse.  Gives available exchanges.
