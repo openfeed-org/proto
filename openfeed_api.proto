@@ -82,6 +82,7 @@ enum SubscriptionType {
 	TRADES = 5;
 	CUMLATIVE_VOLUME = 6;
 	OHLC = 7;
+	OHLC_NON_REGULAR = 8;
 }
 
 ////////////////////
