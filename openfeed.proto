@@ -10,7 +10,6 @@ syntax = "proto3";
 
 package org.openfeed;
 
-option go_package = "openfeed";
 option java_multiple_files = true;
 option java_generate_equals_and_hash = true;
 option optimize_for = SPEED;
@@ -648,6 +647,10 @@ message TradeCorrection {
   sint64 distributionTime = 27;
   /// time in nano seconds since epoch.
   sint64 transactionTime2 = 28;
+  // Original Price
+  sint64 originalTradePrice = 29;
+  // Original Quantity
+  sint64 originalTradeQuantity = 30;
 }
 
 //
