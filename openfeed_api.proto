@@ -193,7 +193,7 @@ message SubscriptionRequest {
     repeated SubscriptionType subscriptionType = 10;
     /// 0 = send only current snapshot once, else send at interval seconds 
     sint32 snapshotIntervalSeconds = 11;
-    /// Defaults to ALL types except Options.  Options must be explicitly requested.
+    /// Spreads and Options must be explicitly requested.
     repeated InstrumentDefinition.InstrumentType instrumentType = 12;
    }
 }
