@@ -130,6 +130,11 @@ message InstrumentResponse {
   sint64 correlationId = 1;
   Status status = 2;
   sint32 numberOfDefinitions = 3;
+  //
+  string symbol = 4;
+  sint64 marketId = 5;
+  string exchange = 6;
+  sint32 channelId = 7;
 }
 
 /// Instrument References, returns InstrumentReferenceResponse(s)
