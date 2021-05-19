@@ -194,6 +194,8 @@ message InstrumentDefinition {
   sint32 bidOfferQuantityDenominator = 227;
   ///
   string primaryListingMarketParticipantId= 228;
+  ///
+  string subscriptionSymbol= 229;
 
   // #############################################
   enum InstrumentType {
