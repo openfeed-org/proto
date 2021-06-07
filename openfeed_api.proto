@@ -60,6 +60,7 @@ message OpenfeedGatewayMessage {
 enum Result {
   UNKNOWN_RESULT = 0;
   SUCCESS = 1;
+  DUPLICATE_LOGIN = 115;
   INVALID_SYMBOL = 116;
   INVALID_MARKET_ID = 117;
   INVALID_EXCHANGE = 118;
