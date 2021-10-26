@@ -212,6 +212,7 @@ message SubscriptionResponse {
   sint32 channelId = 6;
   sint32 numberOfDefinitions = 7;
   SubscriptionType subscriptionType = 8;
+  bool unsubscribe = 9;
 }
 
 
