@@ -50,8 +50,16 @@ enum InstrumentTradingStatus {
   CROSS = 19;
   POST_CLOSE = 20;
   NO_CHANGE = 21;
-  // Not available for trading.
-  NAFT = 22;
+  NAFT = 22; // Not available for trading.
+  TRADING_RANGE_INDICATION = 23;
+  MARKET_IMBALANCE_BUY = 24;
+  MARKET_IMBALANCE_SELL = 25;
+  MOC_IMBALANCE_BUY = 26; // Market On Close Imbalance Buy
+  MOC_IMBALANCE_SELL = 27;
+  NO_MARKET_IMBALANCE = 28;
+  NO_MOC_IMBALANCE = 29;
+  SHORT_SELL_RESTRICTION = 30;
+  LIMIT_UP_LIMIT_DOWN = 31;
 }
 
 enum RegulationSHOShortSalePriceTest {
