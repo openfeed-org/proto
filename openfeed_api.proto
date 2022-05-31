@@ -101,6 +101,7 @@ message LoginRequest {
   string username = 2;
   string password = 3;
   string clientVersion = 4;
+  sint32 protocolVersion = 5;
 }
 message LoginResponse {
   sint64 correlationId = 1;
