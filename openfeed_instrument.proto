@@ -265,7 +265,7 @@ message InstrumentDefinition {
     LAST_TRADE_DATE = 2;
 
     // Futures only
-    SETTLEMENT_DATE = 10;
+    FINAL_SETTLEMENT_DATE = 10;
     FIRST_DELIVERY_DATE = 11;
     LAST_DELIVERY_DATE = 12;
     FIRST_NOTICE_DATE = 13;
