@@ -208,6 +208,7 @@ message InstrumentDefinition {
     SPREAD = 6;
     MUTUAL_FUND = 7;
     MONEY_MARKET_FUND = 8;
+    OPTION_SPREAD = 9;
   }
 
   /// Market depth implementation type
