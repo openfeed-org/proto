@@ -314,6 +314,8 @@ message InstrumentDefinition {
     string vendor = 1;
     // The symbol assigned by the vendor.
     string symbol = 2;
+    // The long symbol assigned by the vendor. Includes 2 char year for futures.
+    string longSymbol = 3;
   }
 
   /// Recommended display format for prices.
