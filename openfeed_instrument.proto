@@ -294,6 +294,7 @@ message InstrumentDefinition {
     sint32 ratio = 2;
 
     string symbol = 3;
+    string longSymbol = 4;
     // Additional information about the leg will be found in the instrument definition
     // for the leg.  It is not included here to reduce duplication.
   }
