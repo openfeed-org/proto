@@ -1,0 +1,28 @@
+name: Generate and sync proto markdown to doc repo
+on: [push]
+
+jobs:
+  Gen-And-Push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+      - uses: addnab/docker-run-action@v3
+        with:
+          image: pseudomuto/protoc-gen-doc
+          options: -v ${{ github.workspace }}:/protos -v ${{ github.workspace }}/.docs:/out
+          run: |
+            echo "Running Script"
+            ./entrypoint.sh --doc_opt=./protos/.docs/markdown.tmpl,proto_markdown.md
+      - name: Push latest generated markdown docs to documentation repo
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.BUILDER_ACCESS_TOKEN }}
+        with:
+          source_file: './.docs/proto_markdown.md'
+          destination_repo: 'openfeed-org/documentation'
+          destination_branch: 'PySDK'
+          destination_folder: 'docs/_generated'
+          user_email: 'builder@barchart.com'
+          user_name: 'barchart-builder'
+          commit_message: 'Sync latest protodoc'
