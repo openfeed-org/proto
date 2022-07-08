@@ -190,7 +190,7 @@ enum SymbolType {
 
 /// Bulk subscription filter.
 message BulkSubscriptionFilter {
-  /// Type of the symbol: Barchart or Exchange. Barchart is the default.
+  /// Type of the symbol: Barchart of Exchange. Barchart is the default.
   SymbolType symbolType = 1;
   /// regular expression pattern for the symbol
   string symbolPattern = 2;
@@ -231,6 +231,7 @@ message SubscriptionResponse {
   sint32 numberOfDefinitions = 7;
   SubscriptionType subscriptionType = 8;
   bool unsubscribe = 9;
+  sint32 snapshotIntervalSeconds = 10;
 }
 
 
