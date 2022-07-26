@@ -197,6 +197,9 @@ message InstrumentDefinition {
   ///
   string subscriptionSymbol= 229;
 
+  /// The Month/ Day of expiration for futures and options. Corresponds to the expiration month.
+  MaturityDate contractMaturity = 230;
+
   // #############################################
   enum InstrumentType {
     UNKNOWN_INSTRUMENT_TYPE = 0;
@@ -266,7 +269,7 @@ message InstrumentDefinition {
     LAST_TRADE_DATE = 2;
 
     // Futures only
-    FINAL_SETTLEMENT_DATE = 10;
+    MATURITY_DATE = 10;
     FIRST_DELIVERY_DATE = 11;
     LAST_DELIVERY_DATE = 12;
     FIRST_NOTICE_DATE = 13;
@@ -295,6 +298,8 @@ message InstrumentDefinition {
 
     string symbol = 3;
     string longSymbol = 4;
+    float legOptionDelta = 5;
+    float legPrice = 6;
     // Additional information about the leg will be found in the instrument definition
     // for the leg.  It is not included here to reduce duplication.
   }
