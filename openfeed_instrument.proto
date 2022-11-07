@@ -290,6 +290,7 @@ message InstrumentDefinition {
 
   message Event {
     EventType type = 1;
+    /// Epoch time in ms
     sint64 date = 2;
   }
 
