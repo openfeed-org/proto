@@ -138,6 +138,7 @@ message InstrumentResponse {
   sint64 marketId = 5;
   string exchange = 6;
   sint32 channelId = 7;
+  sint32 exchangeId = 8;
 }
 
 /// Instrument References, returns InstrumentReferenceResponse(s)
@@ -164,6 +165,7 @@ message InstrumentReferenceResponse {
   string ddfExchange = 9; 
   string ddfBaseCode = 10; 
   string exchangeSymbol = 11;
+  sint32 exchangeId = 12;
 }
 
 /// Exchange Request, returns ExchangeResponse.  Gives available exchanges.
@@ -179,6 +181,7 @@ message ExchangeResponse {
     string code = 1;
     string description = 2;
     repeated string aliases = 3;
+    sint32 exchangeId = 4;
   }
 }
 

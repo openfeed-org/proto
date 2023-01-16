@@ -202,6 +202,8 @@ message InstrumentDefinition {
 
   string underlying = 231;
   string commodity = 232;
+  /// Barchart Exchange Id
+  sint32 exchangeId = 233;
 
   // #############################################
   enum InstrumentType {
