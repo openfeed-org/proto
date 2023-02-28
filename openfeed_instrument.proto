@@ -200,10 +200,16 @@ message InstrumentDefinition {
   /// The Month/ Day of expiration for futures and options. Corresponds to the expiration month.
   MaturityDate contractMaturity = 230;
 
+  /// Barchart Underlying Symbol
   string underlying = 231;
   string commodity = 232;
   /// Barchart Exchange Id
   sint32 exchangeId = 233;
+  /// Barchart Price Scaling Exponent
+  sint32 priceScalingExponent = 234;
+  /// The Openfeed marketId of the underlying asset.
+  sint64 underlyingOpenfeedMarketId = 235;
+
 
   // #############################################
   enum InstrumentType {
