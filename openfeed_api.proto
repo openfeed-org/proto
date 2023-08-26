@@ -60,6 +60,8 @@ message OpenfeedGatewayMessage {
 enum Result {
   UNKNOWN_RESULT = 0;
   SUCCESS = 1;
+  JWT_EXPIRED = 113;
+  JWT_INVALID = 114;
   DUPLICATE_LOGIN = 115;
   INVALID_SYMBOL = 116;
   INVALID_MARKET_ID = 117;
@@ -102,6 +104,7 @@ message LoginRequest {
   string password = 3;
   string clientVersion = 4;
   sint32 protocolVersion = 5;
+  string jwtToken = 6;
 }
 message LoginResponse {
   sint64 correlationId = 1;
