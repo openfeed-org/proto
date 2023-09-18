@@ -400,6 +400,7 @@ message MarketUpdate {
       MarketSummary marketSummary = 46;
       HighRolling highRolling = 47;
       LowRolling lowRolling = 48;
+      RequestForQuote requestForQuote = 49;
   }
 }
 
@@ -1067,3 +1068,12 @@ message InstrumentAction {
   InstrumentDefinition newInstrument = 11;
 }
 
+/// Request For Quote
+message RequestForQuote {
+  string quoteRequestId = 1;
+  string symbol = 2;
+  sint64 securityId = 3;
+  sint32 orderQuantity = 4;
+  sint32 quoteType = 5;
+  sint32 side = 6;
+}
