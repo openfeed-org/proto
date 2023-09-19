@@ -197,7 +197,7 @@ enum SymbolType {
 
 /// Bulk subscription filter.
 message BulkSubscriptionFilter {
-  /// Type of the symbol: Barchart of Exchange. Barchart is the default.
+  /// Type of the symbol: Barchart or Exchange. Barchart is the default.
   SymbolType symbolType = 1;
   /// regular expression pattern for the symbol
   string symbolPattern = 2;
@@ -208,7 +208,7 @@ message SubscriptionRequest {
   /// Client-assigned id for this request.  Response will include same id
   sint64 correlationId = 1;
   string token = 2;
-  /// Preferred service (realtime or delayed).
+  /// Preferred service (realtime or delayed). REAL_TIME is the default.
   Service service = 3;
   bool unsubscribe = 4;
   repeated Request requests = 5;
@@ -226,6 +226,8 @@ message SubscriptionRequest {
     repeated InstrumentDefinition.InstrumentType instrumentType = 12;
     /// Filter for the exchange and channel subscriptions.
     repeated BulkSubscriptionFilter bulkSubscriptionFilter = 13;
+    /// Filter for Spread Types
+    repeated string spreadTypeFilter = 14;
    }
 }
 message SubscriptionResponse {
