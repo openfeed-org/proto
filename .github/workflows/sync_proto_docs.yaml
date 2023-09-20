@@ -21,7 +21,7 @@ jobs:
         with:
           source_file: './.docs/proto_markdown.md'
           destination_repo: 'openfeed-org/documentation'
-          destination_branch: 'PySDK'
+          destination_branch: 'master'
           destination_folder: 'docs/_generated'
           user_email: 'builder@barchart.com'
           user_name: 'barchart-builder'
