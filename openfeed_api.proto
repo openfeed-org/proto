@@ -60,6 +60,7 @@ message OpenfeedGatewayMessage {
 enum Result {
   UNKNOWN_RESULT = 0;
   SUCCESS = 1;
+  INSTRUMENTS_NOT_FOUND = 112;
   JWT_EXPIRED = 113;
   JWT_INVALID = 114;
   DUPLICATE_LOGIN = 115;
@@ -126,6 +127,10 @@ message LogoutResponse {
 message InstrumentRequest {
   sint64 correlationId = 1;
   string token = 2;
+  /// Filter on these instrument types
+  repeated InstrumentDefinition.InstrumentType instrumentType = 3;
+  /// Filter on these spread types
+  repeated string spreadType = 4;
   oneof request {
    string symbol = 10;
    sint64 marketId = 11;
