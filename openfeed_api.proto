@@ -131,6 +131,8 @@ message InstrumentRequest {
   repeated InstrumentDefinition.InstrumentType instrumentType = 3;
   /// Filter on these spread types
   repeated string spreadType = 4;
+  /// If version >= 1 then will send InstrumentDefinition in the InstrumentResponse
+  sint32 version = 5;
   oneof request {
    string symbol = 10;
    sint64 marketId = 11;
@@ -148,6 +150,8 @@ message InstrumentResponse {
   string exchange = 6;
   sint32 channelId = 7;
   sint32 exchangeId = 8;
+  /// Will be set if InstrumentRequest.version >= 1
+  InstrumentDefinition instrumentDefinition = 15;
 }
 
 /// Instrument References, returns InstrumentReferenceResponse(s)
