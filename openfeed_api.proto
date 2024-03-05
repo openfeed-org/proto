@@ -30,6 +30,7 @@ message OpenfeedGatewayRequest {
     InstrumentRequest instrumentRequest = 4;
     InstrumentReferenceRequest instrumentReferenceRequest = 5;
     ExchangeRequest exchangeRequest = 6;
+    ListSubscriptionsRequest listSubscriptionsRequest = 7;
   }
 }
 /// Openfeed Server Response
@@ -50,6 +51,7 @@ message OpenfeedGatewayMessage {
     Ohlc ohlc = 12;
     ExchangeResponse exchangeResponse = 13;
     InstrumentAction instrumentAction = 14;
+    ListSubscriptionsResponse listSubscriptionsResponse = 15;
   }
 }
 
@@ -76,6 +78,7 @@ enum Result {
   INSUFFICIENT_PRIVILEGES = 125;    
   AUTHENTICATION_REQUIRED = 126;    
   GENERIC_FAILURE = 127;
+  INVALID_USERNAME = 128;
 }
 enum SubscriptionType {
 	ALL = 0;
@@ -251,6 +254,38 @@ message SubscriptionResponse {
   bool unsubscribe = 9;
   sint32 snapshotIntervalSeconds = 10;
 }
+
+/// List Subscriptions for a user
+message ListSubscriptionsRequest {
+  sint64 correlationId = 1;
+  string token = 2;
+  string username = 3;
+}
+
+message ListSubscriptionsResponse {
+  sint64 correlationId = 1;
+  Status status = 2;
+  string username = 3;
+  repeated Session sessions = 10;
+
+  message Session {
+    /// Nano second unix epoch
+    sint64 loginTime = 1;
+    string token = 2;
+    string clientVersion = 3;
+    repeated Subscription marketSubscriptions = 10;
+    repeated Subscription exchangeSubscriptions = 11;
+  }
+  message Subscription {
+   string subscriptionId = 1;
+   string symbolId = 2;
+   sint64 marketId = 3;
+   repeated string symbols = 4;
+   string exchange = 10;
+   string root = 11;
+  }
+}
+
 
 
 
