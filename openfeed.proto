@@ -126,7 +126,7 @@ enum MarketWideStatus {
 /// A wrapper for Openfeed data.  Will contain exactly one of the supported
 // message types
 message OpenfeedMessage {
-  /// Nanoecond unix epoch at time of message transmission (UTC)
+  /// Nano second unix epoch at time of message transmission (UTC)
   sint64 sendingTime = 1;
   /// The total number of markets available on this channel
   // at the time the message was sent.  For UDP snapshot and definition feeds.
@@ -1065,6 +1065,7 @@ message InstrumentAction {
   sint32 tradeDate = 2;
   ActionType action = 3;
   string message = 4;
+  string oldAlias = 5;
   InstrumentDefinition instrument = 10;
   InstrumentDefinition newInstrument = 11;
 }
