@@ -280,9 +280,13 @@ message ListSubscriptionsResponse {
    string subscriptionId = 1;
    string symbolId = 2;
    sint64 marketId = 3;
-   repeated string symbols = 4;
+   repeated SymbolCount symbolCounts = 4;
    string exchange = 10;
    string root = 11;
+  }
+  message SymbolCount {
+    string symbol = 1;
+    sint32 count = 2;
   }
 }
 
