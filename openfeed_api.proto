@@ -87,9 +87,10 @@ enum SubscriptionType {
 	DEPTH_PRICE = 3;
 	DEPTH_ORDER = 4;
 	TRADES = 5;
-	CUMLATIVE_VOLUME = 6;
+	CUMULATIVE_VOLUME = 6;
 	OHLC = 7;
 	OHLC_NON_REGULAR = 8;
+	SETTLEMENT = 9;
 }
 
 ////////////////////
