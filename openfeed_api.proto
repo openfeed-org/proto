@@ -241,6 +241,10 @@ message SubscriptionRequest {
     repeated BulkSubscriptionFilter bulkSubscriptionFilter = 13;
     /// Filter for Spread Types
     repeated string spreadTypeFilter = 14;
+    /// Do not send instrument(s) on successful subscription
+    bool subscriptionDoNotSendInstruments = 15;
+    /// Do not send market snapshot(s) on successful subscription
+    bool subscriptionDoNotSendSnapshots = 16;
    }
 }
 message SubscriptionResponse {
