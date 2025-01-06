@@ -451,6 +451,7 @@ message ClearBook {
 message InstrumentStatus {
   // UTC Timestamp, nano seconds since Unix epoch
   sint64 transactionTime = 9;
+  /// Trading status.
   InstrumentTradingStatus tradingStatus = 10;
   // UTC Timestamp, nano seconds since Unix epoch
   sint64 openingTime = 11;
@@ -458,6 +459,8 @@ message InstrumentStatus {
   /// Date only, format 2012-07-04 -> 20120704
   sint32 tradeDate = 13;
   RegulationSHOShortSalePriceTest regulationSHOShortSalePriceTest = 14;
+  /// Prior trading status for the instrument.
+  InstrumentTradingStatus priorTradingStatus = 15;
 }
 
 /// Best Bid and Offer.
