@@ -209,6 +209,8 @@ message InstrumentDefinition {
   sint32 priceScalingExponent = 234;
   /// The Openfeed marketId of the underlying asset.
   sint64 underlyingOpenfeedMarketId = 235;
+  /// Barchart Exchange Name
+  string barchartExchange = 236;
 
 
   // #############################################
