@@ -211,6 +211,8 @@ message InstrumentDefinition {
   sint64 underlyingOpenfeedMarketId = 235;
   /// Barchart Exchange Name
   string barchartExchange = 236;
+  sint64 contractSize = 237;
+  string contractSizeDescription = 238;
 
 
   // #############################################
