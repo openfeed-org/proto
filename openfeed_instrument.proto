@@ -213,7 +213,7 @@ message InstrumentDefinition {
   string barchartExchange = 236;
   sint64 contractSize = 237;
   string contractSizeDescription = 238;
-
+  ExchangeMetadata exchangeMetadata = 239;
 
   // #############################################
   enum InstrumentType {
@@ -367,4 +367,13 @@ message InstrumentDefinition {
   	string currency1 = 1;
   	string currency2 = 2;
   }
+
+  /// Exchange Metadata
+  message ExchangeMetadata {
+    sint64 securityId = 1;
+    string channelId = 2;
+    sint32 sbeId = 3;
+    sint64 underlyingSecurityId = 4;
+  }
+
 }
