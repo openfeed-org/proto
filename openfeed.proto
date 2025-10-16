@@ -240,6 +240,7 @@ message MarketSession {
   MonetaryValue monetaryValue = 42;
   // UTC Timestamp, nano seconds since Unix epoch
   sint64 transactionTime = 43;
+  OfficialBestBidOffer officialBestBidOffer = 45;
 }
 
 /// Snapshot for a market
@@ -315,6 +316,14 @@ message MarketSnapshot {
   LowRolling lowRolling = 52;
   /// 'Z' session. Includes all trades, even the ones that do not update Last.
   MarketSession zSession = 53;
+  ReferenceVolatilityPrice referenceVolatilityPrice = 54;
+  PriceLimits priceLimits = 55;
+
+  /// Older previous sessions
+  repeated MarketSession sessions = 56;
+
+  OfficialBestBidOffer officialBestBidOffer = 57;
+  MarketOpenInterest marketOpenInterest = 58;
 }
 
 enum SnapshotRequestResult {
@@ -401,6 +410,10 @@ message MarketUpdate {
       HighRolling highRolling = 47;
       LowRolling lowRolling = 48;
       RequestForQuote requestForQuote = 49;
+      ReferenceVolatilityPrice referenceVolatilityPrice = 50;
+      PriceLimits priceLimits = 51;
+      OfficialBestBidOffer officialBestBidOffer = 52;
+      MarketOpenInterest marketOpenInterest = 53;
   }
 }
 
@@ -497,6 +510,18 @@ message BestBidOffer {
   bool regional = 32;
   /// True if not persisted in the EOD database.
   bool transient = 33;
+}
+
+/// Official Best Bid and Offer.
+message OfficialBestBidOffer {
+  /// Date only, format 2012-07-04 -> 20120704
+  sint32 tradeDate = 8;
+  // UTC Timestamp, nano seconds since Unix epoch
+  sint64 transactionTime = 9;
+  /// Divide by priceDenominator
+  sint64 bidPrice = 10;
+  /// Divide by priceDenominator
+  sint64 offerPrice = 11;
 }
 
 /// Insert a new price level, pushing existing levels down
@@ -842,6 +867,14 @@ message OpenInterest {
   sint64 volume = 11;
 }
 
+/// Market Open interest
+message MarketOpenInterest {
+  sint64 transactionTime = 9;
+  // Date only, format 2012-07-04 -> 20120704
+  sint32 tradeDate = 10;
+  sint64 volume = 11;
+}
+
 /// Volume Weighted Average Price
 message Vwap {
   sint64 transactionTime = 9;
@@ -903,6 +936,34 @@ message CapitalDistributions {
 message SharesOutstanding {
   sint64 sharesOutstanding = 1;
   sint64 transactionTime = 2;
+}
+
+/// Price limits.
+message PriceLimits {
+  /// trade date
+  sint32 tradeDate = 1;
+  /// Transaction time.
+  sint64 transactionTime = 2;
+  /// Upper price limit for the outright tradable instrument for the current trading day
+  sint64 upperPriceLimit = 3;
+  /// Lower price limit for the outright tradable instrument for the current trading day
+  sint64 lowerPriceLimit = 4;
+}
+
+/// The Reference Volatility Price message provides ‘raw’ strikes. LME volatilities are quoted in Delta space.
+message ReferenceVolatilityPrice {
+  /// trade date
+  sint32 tradeDate = 1;
+  /// Identifies the ATM strike (1) or delta point (0).
+  sint32 atm = 2;
+  /// Indicates whether the reference volatility was created in Delta or Strike space.
+  string surfaceDomain = 3;
+  /// Volatility
+  sint64 volatility = 4;
+  /// premium
+  sint64 premium = 5;
+  /// Option delta for the volatility point.
+  sint64 delta = 6;
 }
 
 //

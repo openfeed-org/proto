@@ -214,6 +214,7 @@ message InstrumentDefinition {
   sint64 contractSize = 237;
   string contractSizeDescription = 238;
   ExchangeMetadata exchangeMetadata = 239;
+  sint32 roundLotSize = 240;
 
   // #############################################
   enum InstrumentType {
@@ -374,6 +375,8 @@ message InstrumentDefinition {
     string channelId = 2;
     sint32 sbeId = 3;
     sint64 underlyingSecurityId = 4;
+    string securitySymbol = 5;
+    string underlyingSymbol = 6;
   }
 
 }
