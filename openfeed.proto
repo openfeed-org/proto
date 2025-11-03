@@ -241,6 +241,10 @@ message MarketSession {
   // UTC Timestamp, nano seconds since Unix epoch
   sint64 transactionTime = 43;
   OfficialBestBidOffer officialBestBidOffer = 45;
+  ReferenceVolatilityPrice referenceVolatilityPrice = 46;
+  PriceLimits priceLimits = 47;
+  MarketOpenInterest marketOpenInterest = 48;
+  Vwap vwap = 49;
 }
 
 /// Snapshot for a market
