@@ -245,6 +245,8 @@ message MarketSession {
   PriceLimits priceLimits = 47;
   MarketOpenInterest marketOpenInterest = 48;
   Vwap vwap = 49;
+  WarrantBand warrantBand = 50;
+  PositionBand positionBand = 51;
 }
 
 /// Snapshot for a market
@@ -328,6 +330,9 @@ message MarketSnapshot {
 
   OfficialBestBidOffer officialBestBidOffer = 57;
   MarketOpenInterest marketOpenInterest = 58;
+
+  WarrantBand warrantBand = 59;
+  PositionBand positionBand = 60;
 }
 
 enum SnapshotRequestResult {
@@ -418,6 +423,8 @@ message MarketUpdate {
       PriceLimits priceLimits = 51;
       OfficialBestBidOffer officialBestBidOffer = 52;
       MarketOpenInterest marketOpenInterest = 53;
+      WarrantBand warrantBand = 54;
+      PositionBand positionBand = 55;
   }
 }
 
@@ -670,6 +677,8 @@ message Trade {
   bool transient = 35;
   /// Index short name used to identify index.
   string indexShortName = 36;
+  /// Fractional Quantity.  Divide by quantityFractionalDenominator.
+  sint64 quantityFractional = 37;
 }
 
 ///  Trade Correction
@@ -705,6 +714,10 @@ message TradeCorrection {
   sint64 originalTradePrice = 29;
   // Original Quantity
   sint64 originalTradeQuantity = 30;
+  /// Corrected Fractional Quantity. Divide by quantityFractionalDenominator.
+  sint64 quantityFractional = 31;
+  /// Original Fractional Quantity. Divide by quantityFractionalDenominator.
+  sint64 originalQuantityFractional = 32;
 }
 
 //
@@ -723,6 +736,8 @@ message TradeCancel {
   sint64 distributionTime = 15;
   /// time in nano seconds since epoch.
   sint64 transactionTime2 = 16;
+  /// Corrected Fractional Quantity. Divide by quantityFractionalDenominator.
+  sint64 correctedTradeQuantityFractional = 17;
 }
 
 message Open {
@@ -799,6 +814,8 @@ message Last {
   /// Divide by quantityDenominator
   sint64 quantity = 12;
   string currency = 13;
+  /// Quantity Fractional. Divide by quantityFractionalDenominator.
+  sint64 quantityFractional = 14;
   string session = 30;
 }
 
@@ -825,6 +842,8 @@ message Volume {
   sint32 tradeDate = 10;
   // Total volume traded.
   sint64 volume = 11;
+  /// Fractional Volume. Divide by volumeFractionalDenominator.
+  sint64 volumeFractional = 12;
 }
 
 /// Total number of trades
@@ -877,6 +896,40 @@ message MarketOpenInterest {
   // Date only, format 2012-07-04 -> 20120704
   sint32 tradeDate = 10;
   sint64 volume = 11;
+}
+
+/// Warrant band. Used by LME.
+message WarrantBand {
+  sint32 tradeDate = 1;
+  string type = 2;
+  string productCode = 3;
+  repeated WarrantBandItem bands = 4;
+}
+
+message WarrantBandItem {
+  sint32 lowerValue = 1;
+  sint32 upperValue = 2;
+  sint32 participantCount = 3;
+}
+
+// Position band. Used by LME.
+message PositionBand {
+  sint32 tradeDate = 1;
+  string productCode = 2;
+  repeated PositionBandItem shortBands = 3;
+  repeated PositionBandItem longBands = 4;
+}
+
+message PositionBandItem {
+  sint32 positionLowerValue = 1;
+  sint32 positionUpperValue = 2;
+  repeated PromptCount promptCounts = 3;
+}
+
+message PromptCount {
+  string promptDateLabel = 1;
+  sint32 expiryDate = 2;
+  sint32 participantCount = 3;
 }
 
 /// Volume Weighted Average Price

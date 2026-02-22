@@ -215,6 +215,10 @@ message InstrumentDefinition {
   string contractSizeDescription = 238;
   ExchangeMetadata exchangeMetadata = 239;
   sint32 roundLotSize = 240;
+  /// Divide fractional quantities by this value to get real quantities
+  sint32 quantityFractionalDenominator = 241;
+  /// Divide fractional volumes by this value to get real volumes
+  sint32 volumeFractionalDenominator = 242;
 
   // #############################################
   enum InstrumentType {
