@@ -521,6 +521,14 @@ message BestBidOffer {
   bool regional = 32;
   /// True if not persisted in the EOD database.
   bool transient = 33;
+
+  // Best Odd Lot Order (BOLO)
+  bytes  boloBidParticipantId = 34;
+  sint64 boloBidPrice = 35;
+  sint64 boloBidQuantity = 36;
+  bytes  boloOfferParticipantId = 37;
+  sint64 boloOfferPrice = 38;
+  sint64 boloOfferQuantity = 39;
 }
 
 /// Official Best Bid and Offer.
