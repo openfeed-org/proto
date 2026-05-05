@@ -247,6 +247,7 @@ message MarketSession {
   Vwap vwap = 49;
   WarrantBand warrantBand = 50;
   PositionBand positionBand = 51;
+  Last lastTrade = 52;
 }
 
 /// Snapshot for a market
@@ -324,15 +325,13 @@ message MarketSnapshot {
   MarketSession zSession = 53;
   ReferenceVolatilityPrice referenceVolatilityPrice = 54;
   PriceLimits priceLimits = 55;
-
   /// Older previous sessions
   repeated MarketSession sessions = 56;
-
   OfficialBestBidOffer officialBestBidOffer = 57;
   MarketOpenInterest marketOpenInterest = 58;
-
   WarrantBand warrantBand = 59;
   PositionBand positionBand = 60;
+  Last lastTrade = 61;
 }
 
 enum SnapshotRequestResult {
