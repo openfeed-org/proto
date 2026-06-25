@@ -219,6 +219,7 @@ message InstrumentDefinition {
   sint32 quantityFractionalDenominator = 241;
   /// Divide fractional volumes by this value to get real volumes
   sint32 volumeFractionalDenominator = 242;
+  ContractMetadata contractMetadata = 243;
 
   // #############################################
   enum InstrumentType {
@@ -381,6 +382,18 @@ message InstrumentDefinition {
     sint64 underlyingSecurityId = 4;
     string securitySymbol = 5;
     string underlyingSymbol = 6;
+  }
+
+  /// Contract Metadata
+  message ContractMetadata {
+    string productCategory = 1;
+    string marketCode = 2;
+    string name = 3;
+    string term = 4;
+    sint32 beginDate = 5;
+    sint32 endDate = 6;
+    string deliveryPeriod = 7;
+    string priceType = 8;
   }
 
 }
